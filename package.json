@@ -1,0 +1,15 @@
+{
+  "name": "gqlrecife-apollo-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "graphql": "^14.3.0",
+    "graphql-subscriptions": "^1.1.0",
+    "graphql-type-json": "^0.3.0",
+    "vue-cli-plugin-apollo": "^0.20.0"
+  }
+}

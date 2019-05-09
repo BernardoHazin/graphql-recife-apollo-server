@@ -1,0 +1,20 @@
+# Included scalars
+scalar JSON
+scalar Upload
+
+type Query {
+  getComments: [Comment]!
+}
+
+type Mutation {
+  addComment(message: String): String!
+}
+
+type Subscription {
+  commentAdded: Comment!
+}
+
+type Comment {
+  message: String
+  date: Float
+}
