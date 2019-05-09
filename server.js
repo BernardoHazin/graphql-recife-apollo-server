@@ -7,7 +7,7 @@ const opts = {
   subscriptionsPath: '/graphql',
   enableMocks: false,
   enableEngine: false,
-  cors: process.env.cors || '*',
+  cors: process.env.CORS || '*',
   timeout: 1000000,
   quiet: true,
   paths: {
