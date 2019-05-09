@@ -1,5 +1,7 @@
 const server = require('vue-cli-plugin-apollo/graphql-server')
 
+console.log('PORT', process.env.PORT)
+
 const opts = {
   host: 'localhost',
   port: process.env.PORT || 4000,
