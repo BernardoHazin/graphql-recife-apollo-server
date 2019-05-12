@@ -1,11 +1,11 @@
-import GraphQLJSON from 'graphql-type-json'
-import { PubSub } from 'graphql-subscriptions'
+const GraphQLJSON = require('graphql-type-json')
+const { PubSub } = require('graphql-subscriptions')
 
 const pubsub = new PubSub()
 
 const comments = []
 
-export default {
+module.exports = {
   JSON: GraphQLJSON,
 
   Query: {
@@ -31,11 +31,3 @@ export default {
     }
   }
 }
-
-/* setInterval(() => {
-  if (comments.length > 10) comments.shift()
-  const message = 'hey you!'.repeat(Math.ceil(Math.random() * 10))
-  const date = Date.now()
-  comments.push({ message, date })
-  pubsub.publish('comments', { commentAdded: { message, date } })
-}, 4000) */

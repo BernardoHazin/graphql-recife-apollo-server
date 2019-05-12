@@ -1,26 +1,9 @@
-const server = require('vue-cli-plugin-apollo/graphql-server')
+const typeDefs = require('./apollo-server/type-defs')
+const resolvers = require('./apollo-server/resolvers')
+const { ApolloServer } = require('apollo-server')
 
-console.log('PORT', process.env.PORT)
+const server = new ApolloServer({ typeDefs, resolvers })
 
-const opts = {
-  host: 'localhost',
-  port: process.env.PORT || 4000,
-  graphqlPath: '/graphql',
-  subscriptionsPath: '/graphql',
-  enableMocks: false,
-  enableEngine: false,
-  cors: '*',
-  timeout: 1000000,
-  quiet: true,
-  paths: {
-    typeDefs: require.resolve('./apollo-server/type-defs.js'),
-    resolvers: require.resolve('./apollo-server/resolvers.js'),
-    context: require.resolve('./apollo-server/context.js'),
-    directives: require.resolve('./apollo-server/directives.js'),
-    dataSources: require.resolve('./apollo-server/data-sources.js')
-  }
-}
-
-server(opts, () => {
-  console.log('Apollo server is running!')
+server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`)
 })

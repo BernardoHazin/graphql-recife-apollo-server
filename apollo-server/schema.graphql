@@ -1,6 +1,5 @@
 # Included scalars
 scalar JSON
-scalar Upload
 
 type Query {
   getComments: [Comment]!
