@@ -1,19 +1,16 @@
-const GraphQLJSON = require('graphql-type-json')
-const { PubSub } = require('graphql-subscriptions')
+const { PubSub, withFilter } = require('graphql-subscriptions')
 
 const pubsub = new PubSub()
 
 const comments = []
 
 module.exports = {
-  JSON: GraphQLJSON,
-
   Query: {
-    getComments: root => comments
+    getComments: () => comments
   },
 
   Mutation: {
-    addComment: (root, { message }) => {
+    addComment: (root, { message }, context) => {
       if (comments.length > 10) comments.shift()
       const comment = {
         message,
@@ -28,6 +25,21 @@ module.exports = {
   Subscription: {
     commentAdded: {
       subscribe: () => pubsub.asyncIterator('comments')
-    }
+    },
+    // commentAdded: {
+    //   subscribe: withFilter(
+    //     () => pubsub.asyncIterator('comments'),
+    //     (playload, variables) => {
+    //       return playload.commentAdded.message.length > 5
+    //     }
+    //   )
+    // },
+    // commentAdded: {
+    //   subscribe: () => pubsub.asyncIterator('comments'),
+    //   resolve: (payload, args, context, info) => {
+    //     payload.commentAdded.message = payload.commentAdded.message + ` (I've through a resolver!)`
+    //     return payload.commentAdded
+    //   }
+    // }
   }
 }
