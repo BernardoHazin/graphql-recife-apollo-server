@@ -1,8 +1,7 @@
-# Included scalars
-scalar JSON
+scalar Date
 
 type Query {
-  getComments: [Comment]!
+  getComments: [Comment]
 }
 
 type Mutation {
@@ -15,5 +14,5 @@ type Subscription {
 
 type Comment {
   message: String
-  date: Float
+  date: Date
 }
