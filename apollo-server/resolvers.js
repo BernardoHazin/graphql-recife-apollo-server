@@ -29,15 +29,17 @@ module.exports = {
     // commentAdded: {
     //   subscribe: withFilter(
     //     () => pubsub.asyncIterator('comments'),
-    //     (playload, variables) => {
+    //     (playload, args) => {
+    //       console.log(`I'm args!`, args)
     //       return playload.commentAdded.message.length > 5
     //     }
     //   )
-    // },
+    // }
     // commentAdded: {
     //   subscribe: () => pubsub.asyncIterator('comments'),
     //   resolve: (payload, args, context, info) => {
-    //     payload.commentAdded.message = payload.commentAdded.message + ` (I've through a resolver!)`
+    //     console.log(`I'm args!`, args)
+    //     payload.commentAdded.message = payload.commentAdded.message + ` (I've been through a resolver!)`
     //     return payload.commentAdded
     //   }
     // }
