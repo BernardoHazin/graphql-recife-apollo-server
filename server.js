@@ -4,7 +4,7 @@ const { ApolloServer } = require('apollo-server')
 
 const server = new ApolloServer({
   typeDefs /* GraphQL Schema Definition Language */,
-  resolvers /* Required! */,
+  resolvers,
   context: async ({ req, connection }) => {
     return { title: `I'm the context!` }
   }
